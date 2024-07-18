@@ -1,14 +1,12 @@
 package com.sketch.api.service.impl;
 
+import com.sketch.api.model.User;
+import com.sketch.api.model.dto.UserDTO;
 import com.sketch.api.repository.UserRepository;
 import com.sketch.api.service.UserService;
-import com.sketch.api.util.Response;
-import com.sketch.api.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,10 +21,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Response find(String name) {
+    public String find(String name) {
         this.logger.info(name);
-        String res = this.userRepository.findByName(name).getName();
-        return ResponseUtil.response(0, "", new HashMap<String, Object>(){{put("name", res);}});
+        return this.userRepository.findByName(name).getName();
+    }
+
+    @Override
+    public void create(UserDTO user) {
+        this.userRepository.insert(new User(user.getName(), user.getEmail()));
     }
 
 }
