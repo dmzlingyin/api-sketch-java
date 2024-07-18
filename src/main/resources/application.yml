@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  tomcat:
+    uri-encoding: UTF-8
+
+logging:
+  level:
+    root: INFO
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://root:root@192.168.7.251:27017/test?authSource=admin
