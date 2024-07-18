@@ -2,6 +2,8 @@ package com.sketch.api.service.impl;
 
 import com.sketch.api.repository.UserRepository;
 import com.sketch.api.service.UserService;
+import com.sketch.api.util.Response;
+import com.sketch.api.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +21,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String find(String name) {
+    public Response find(String name) {
         this.logger.info(name);
-        return this.userRepository.findByName(name).getName();
+        String res = this.userRepository.findByName(name).getName();
+        return ResponseUtil.response(0, "", res);
     }
 
 }

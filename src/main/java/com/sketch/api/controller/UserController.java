@@ -1,6 +1,7 @@
 package com.sketch.api.controller;
 
 import com.sketch.api.service.UserService;
+import com.sketch.api.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class UserController {
 	}
 
 	@GetMapping("/find")
-	public String find(@RequestParam(name="name", required=false, defaultValue="alice") String name) {
+	public Response find(@RequestParam(name="name", required=false, defaultValue="alice") String name) {
 		return this.helloService.find(name);
 	}
 
