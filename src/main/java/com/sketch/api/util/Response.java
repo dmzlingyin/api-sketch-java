@@ -1,8 +1,14 @@
 package com.sketch.api.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public  class Response {
     private int code;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String msg;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
 
     public Response(int code, String msg, Object data) {
