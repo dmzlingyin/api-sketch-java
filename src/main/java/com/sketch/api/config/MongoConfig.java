@@ -18,4 +18,5 @@ public class MongoConfig {
         converter.setTypeMapper(new DefaultMongoTypeMapper(null)); // 禁用 _class 字段
         return converter;
     }
+
 }
